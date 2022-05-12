@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./movie.css">
+
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+<body>
+    <div class="container container-cover">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="./movie.html">Movie Cruiser</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active addMovie" aria-current="page" onclick="addMovie()">Add
+                                    Movie</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                id="input">
+                            <button class="btn btn-outline-success" type="button" onclick="search()">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+        <div class="movie-details row" id="container">
+
+        </div>
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content container-modal">
+                <div>
+
+                    <span class="close" onclick="closeDialog()">&times;</span>
+                </div>
+                <div class="column">
+                    <h2>Add Movie</h2>
+                    <div class="row col container-addition">
+                        <div class="column col">
+                            <div class="col">
+                                <p>Movie Name: </p>
+                            </div>
+                            <div class="col">
+                                <p>Movie Duration: </p>
+
+                            </div>
+                            <div class="col">
+                                <p>Movie Rating: </p>
+
+                            </div>
+                            <div class="col">
+                                <p>About Movie: </p>
+
+                            </div>
+                            <div class="col">
+                                <p>Select Image: </p>
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="col input-field">
+                                <input type="text" id="name">
+                            </div>
+                            <div class="col input-field">
+                                <input type="text" id="duration">
+                            </div>
+                            <div class="col input-field">
+                                <input type="text" id="rating">
+                            </div>
+                            <div class="col input-field">
+                                <textarea type="text" id="about" class="text-area"></textarea>
+                            </div>
+                            <div class="col input-field">
+                                <input type="file" id="file" onchange="file()">
+                            </div>
+                            <div class="col mt-2">
+                                <img src="./" alt="" id="imagePreview" class="image-preview mt-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-button">
+                        <button type="button" class="btn btn-primary buttonPopUp" onclick="addMovieDetails()">Add
+                            Movie</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="editModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content container-modal">
+                <div>
+
+                    <span class="close" onclick="editCloseDialog()">&times;</span>
+                </div>
+                <div class="column">
+                    <h2>Edit Movie Details</h2>
+                    <div class="row col container-addition">
+                        <div class="column col">
+                            <div class="col">
+                                <p>Movie Name: </p>
+                            </div>
+                            <div class="col">
+                                <p>Movie Duration: </p>
+
+                            </div>
+                            <div class="col">
+                                <p>Movie Rating: </p>
+
+                            </div>
+                            <div class="col">
+                                <p>About Movie: </p>
+
+                            </div>
+                            <div class="col">
+                                <p>Select Image: </p>
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="col input-field">
+                                <input type="text" id="editName">
+                            </div>
+                            <div class="col input-field">
+                                <input type="text" id="editDuration">
+                            </div>
+                            <div class="col input-field">
+                                <input type="text" id="editRating">
+                            </div>
+                            <div class="col input-field">
+                                <textarea type="text" id="editAbout" class="text-area"></textarea>
+                            </div>
+                            <div class="col input-field">
+                                <input type="file" id="editFile" onchange="editFile()">
+                            </div>
+                            <div class="col mt-2">
+                                <img src="./" alt="" id="editimagePreview" class="image-preview mt-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-button">
+                        <button type="button" class="btn btn-primary buttonPopUp"
+                            onclick="editMovieDetails()">Save</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+    let movieList = {
+        'movies': [
+            {
+                'img': './Images/hello_brother.jpg',
+                'id': 1,
+                'Title': 'Hello Brother',
+                'Duration': '3 hours',
+                'IMDb_Rating': "Rating: 7",
+                'About': 'Hello Brother is a 1999 Indian Hindi-language romantic fantasy action film starring Salman Khan, Arbaaz Khan, Rani Mukerji and Shakti Kapoor'
+            },
+            {
+                'img': './Images/god_father.jpg',
+                'id': 2,
+                'Title': 'The God Father',
+                'Duration': '2 hours',
+                'IMDb_Rating': 'Rating: 9.2',
+                'About': 'The Godfather is a 1972 American crime film[2] directed by Francis Ford Coppola, who co-wrote the screenplay with Mario Puzo, based on Puzos best-selling 1969 novel of the same name.'
+            },
+            {
+                'img': './Images/angry_man.jpg',
+                'id': 3,
+                'Title': 'Angry Man',
+                'Duration': '2 hours',
+                'IMDb_Rating': "Rating: 9.0",
+                'About': '12 Angry Men is a 1957 American courtroom drama film directed by Sidney Lumet, adapted from a 1954 teleplay of the same name by Reginald Rose.'
+            },
+            {
+                'img': './Images/inception.jpg',
+                'id': 4,
+                'Title': 'Inception',
+                'Duration': '2 hours',
+                'IMDb_Rating': 'Rating: 8.7',
+                'About': 'Inception is a 2010 science fiction action film written and directed by Christopher Nolan, who also produced the film with Emma Thomas, his wife. The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets.'
+            },
+            {
+                'img': './Images/the-matrix-759.jpg',
+                'id': 5,
+                'Title': 'The Matrix',
+                'Duration': '2 hours',
+                'IMDb_Rating': 'Rating: 8.7',
+                'About': 'The Matrix is a 1999 science fiction action film written and directed by the Wachowskis. It is the first installment in The Matrix film series, starring Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, and Joe Pantoliano. It depicts a dystopian future in which humanity is unknowingly trapped inside a simulated reality, the Matrix, which intelligent machines have created to distract humans while using their bodies as an energy source'
+            },
+            {
+                'img': './Images/city_of_god.jpg',
+                'id': 6,
+                'Title': 'City of God',
+                'Duration': '3 hours',
+                'IMDb_Rating': 'Rating: 8.6',
+                'About': 'City of God (Portuguese: Cidade de Deus) is a 2002 Brazilian epic crime film co-directed by Fernando Meirelles and Kátia Lund, released Brazil in 2002 and worldwide in 2003. Bráulio Mantovani adapted the story from the 1997 novel of the same name written by Paulo Lins, but the plot is loosely based on real events. '
+            },
+            {
+                'img': './Images/star_wars.jpg',
+                'id': 7,
+                'Title': 'Star Wars',
+                'Duration': '2.5 hours',
+                'IMDb_Rating': 'Rating: 8.6',
+                'About': 'Star Wars is an American epic space-opera[1] multimedia franchise created by George Lucas, which began with the eponymous 1977 film[b] and quickly became a worldwide pop-culture phenomenon. The franchise has been expanded into various films and other media, including television series, video games, novels, comic books, theme park attractions, and themed areas, comprising an all-encompassing fictional universe'
+            },
+            {
+                'img': './Images/life_is_beautiful.jpg',
+                'id': 8,
+                'Title': 'Life is Beautiful',
+                'Duration': '2.5 hours',
+                'IMDb_Rating': 'Rating: 8.6',
+                'About': 'Life Is Beautiful (Italian: La vita è bella, Italian pronunciation: [la ˈviːta ˈɛ bˈbɛlla]) is a 1997 Italian comedy drama directed by and starring Roberto Benigni, who co-wrote the film with Vincenzo Cerami. Benigni plays Guido Orefice, a Jewish Italian bookshop owner, who employs his fertile imagination to shield his son from the horrors of internment in a Nazi concentration camp. '
+            },
+            {
+                'img': './Images/interstellar.jpg',
+                'id': 9,
+                'Title': 'Interstellar',
+                'Duration': '3 hours',
+                'IMDb_Rating': 'Rating: 8.6',
+                'About': 'Interstellar is a 2014 epic science fiction film co-written, directed and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine. Set in a dystopian future where humanity is struggling to survive, the film follows a group of astronauts who travel through a wormhole near Saturn in search of a new home for mankind.'
+            },
+            {
+                'img': './Images/lion_king.jpg',
+                'id': 10,
+                'Title': 'The Lion King',
+                'Duration': '3 hours',
+                'IMDb_Rating': 'Rating: 8.5',
+                'About': 'The Lion King is a 2019 American musical drama film directed and produced by Jon Favreau, written by Jeff Nathanson, and produced by Walt Disney Pictures and Fairview Entertainment. It is a photorealistic computer-animated remake of Disneys traditionally animated 1994 film of the same name. '
+            },
+        ]
+    }
+
+    function edit(param) {
+        let filter;
+        movieList.movies.map((x) => {
+            if (x.id == param) {
+                filter = movieList.movies.indexOf(x)
+
+            }
+        });
+        editValue = filter;
+        console.log(param);
+        var modal = document.getElementById("editModal");
+        modal.style.display = "block";
+        document.getElementById('editName').value = movieList.movies[filter].Title;
+        document.getElementById('editDuration').value = movieList.movies[filter].Duration;
+        document.getElementById('editRating').value = movieList.movies[filter].IMDb_Rating;
+        document.getElementById('editAbout').value = movieList.movies[filter].About;
+        document.getElementById('editimagePreview').src = movieList.movies[filter].img;
+
+    }
+    function deleteMovie(param) {
+        console.log(param);
+        console.log(movieList.movies);
+        let filter;
+        movieList.movies.map((x) => {
+            if (x.id == param) {
+                filter = movieList.movies.indexOf(x)
+
+            }
+        });
+
+        movieList.movies.splice(filter, 1);
+        remove();
+        movieList.movies.map((x) => fetchList(x));
+
+    }
+
+    function file() {
+        let fileReader = new FileReader()
+        fileReader.readAsDataURL(document.getElementById('file').files[0]);
+        fileReader.onload = function (x) {
+            console.log(x.target.result);
+            document.getElementById('imagePreview').src = x.target.result;
+        }
+
+    }
+    function editFile() {
+        let fileReader = new FileReader()
+        fileReader.readAsDataURL(document.getElementById('editFile').files[0]);
+        fileReader.onload = function (x) {
+            console.log(x.target.result);
+            document.getElementById('editimagePreview').src = x.target.result;
+        }
+
+    }
+    let editValue;
+
+    function editMovieDetails() {
+        let name = document.getElementById('editName').value;
+        let duration = document.getElementById('editDuration').value;
+        let rating = document.getElementById('editRating').value;
+        let about = document.getElementById('editAbout').value;
+        let image = document.getElementById('editimagePreview').src;
+        movieList.movies[editValue].Title = name
+        movieList.movies[editValue].Duration = duration
+        movieList.movies[editValue].IMDb_Rating = rating
+        movieList.movies[editValue].About = about
+        movieList.movies[editValue].img = image
+
+        remove();
+        movieList.movies.map((x) => fetchList(x));
+
+        var modal = document.getElementById("editModal");
+        modal.style.display = "none";
+    }
+
+    function addMovieDetails() {
+        let name = document.getElementById('name').value;
+        let duration = document.getElementById('duration').value;
+        let rating = document.getElementById('rating').value;
+        let about = document.getElementById('about').value;
+        let image = document.getElementById('imagePreview').src
+        let obj = {
+            'Title': name,
+            'Duration': duration + 'hours',
+            'IMDb_Rating': rating,
+            'About': about,
+            'img': image
+
+        }
+        movieList.movies.push(obj);
+        fetchList(obj);
+
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+
+    }
+
+    function addMovie() {
+        console.log('Add Movie');
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+    }
+
+    function closeDialog() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+    function editCloseDialog() {
+        var modal = document.getElementById("editModal");
+        modal.style.display = "none";
+    }
+
+    function search() {
+        var keyword = document.getElementById('input').value.toUpperCase();
+        let arr = movieList.movies.filter((param) => param.Title.toUpperCase().includes(keyword));
+        console.log(arr);
+        remove();
+        if (arr != []) {
+            arr.map((param) => fetchList(param));
+        } else {
+            movieList.movies.map((param) => fetchList(param));
+        }
+    }
+
+    function remove() {
+        let a = document.getElementById('container');
+        while (a.firstChild) {
+            a.removeChild(a.firstChild);
+        }
+    }
+
+    function fetchList(param) {
+        console.log(param);
+
+        const container = document.createElement('div');
+        container.classList.add('container-outer');
+        container.classList.add('column');
+
+
+        const button = document.createElement('button');
+        // button.innerHTML = 'Edit';
+        // button.onclick = edit(param.id);
+
+        const button1 = document.createElement('button');
+        // button1.innerHTML = 'Delete';
+        // button.onclick = deleteMovie(param.id);
+
+        const buttonOuter = document.createElement('div');
+        buttonOuter.classList.add('text-right')
+        // buttonOuter.appendChild(button);
+        // buttonOuter.appendChild(button1);
+        buttonOuter.innerHTML = `<button class='buttonPopUp m-2' onclick="edit(${param.id})">Edit</button> <button class='buttonPopUp m-2z' onclick="deleteMovie(${param.id})">Delete</button>`
+
+        const ele1 = document.createElement('img');
+        ele1.src = param.img;
+        container.appendChild(ele1);
+        ele1.classList.add('col');
+
+        const ele = document.createElement('div');
+        ele.innerHTML = param.Title;
+        ele.classList.add('title');
+        ele.classList.add('col');
+        container.appendChild(ele);
+
+
+
+        const ele2 = document.createElement('div');
+        ele2.innerHTML = param.Duration;
+        container.appendChild(ele2);
+        ele2.classList.add('col');
+
+
+        const ele3 = document.createElement('div');
+        ele3.innerHTML = param.IMDb_Rating;
+        container.appendChild(ele3);
+        ele3.classList.add('col');
+
+        const ele4 = document.createElement('div');
+        ele4.innerHTML = param.About;
+        container.appendChild(ele4);
+        ele4.classList.add('col');
+        ele4.classList.add('text-align-justify');
+
+        container.appendChild(buttonOuter);
+        document.getElementById('container').append(container);
+    }
+
+    function getData() {
+
+        let list = movieList.movies;
+        console.log('list');
+        list.forEach((param) => {
+            fetchList(param);
+
+
+        })
+    }
+    window.onload = getData();
+
+</script>
+
+</html>
